@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Rapids Attorneys | Bosch Killman VanderWal, P.C. — Serving West Michigan Since 1910</title>
+<meta name="description" content="Full-service West Michigan law firm since 1910. Business, litigation, estate planning, family law, real estate and more. Book a consultation online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     BKV — editorial redesign. Navy + gold, square corners,
+     hairline rules, restrained accents. No pills, no bubbles.
+     ============================================================ */
+  :root{
+    --navy-900:#0C1B2C; --navy-800:#15304C; --navy-700:#1E4066;
+    --gold:#B8934A; --gold-lt:#CBA75E;
+    --paper:#FFFFFF; --stone:#F5F6F7; --line:#DCE1E6; --line-dk:rgba(255,255,255,.18);
+    --ink:#16222F; --ink-soft:#5A6875;
+    --serif:'Libre Caslon Text', Georgia, serif;
+    --sans:'Libre Franklin','Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.65;font-size:16px;font-weight:300}
+  a{color:inherit}
+  strong{font-weight:600}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.18;color:var(--navy-800)}
+  h2{font-size:clamp(28px,3.2vw,42px)}
+  em{font-style:italic}
+  section{padding:100px 0}
+
+  /* kicker: small caps + hairline */
+  .kicker{display:flex;align-items:center;gap:16px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:22px}
+  .kicker::after{content:"";height:1px;width:64px;background:var(--gold)}
+  .kicker.center{justify-content:center}
+  .kicker.center::before{content:"";height:1px;width:64px;background:var(--gold)}
+
+  /* buttons: rectangular, uppercase, letterspaced */
+  .btn{display:inline-block;font-family:var(--sans);font-weight:500;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding:16px 34px;cursor:pointer;border:1px solid transparent;transition:all .2s;background:none}
+  .btn-solid{background:var(--navy-800);color:#fff;border-color:var(--navy-800)}
+  .btn-solid:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-900)}
+  .btn-line{border-color:var(--navy-800);color:var(--navy-800)}
+  .btn-line:hover{background:var(--navy-800);color:#fff}
+  .btn-line-w{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-line-w:hover{border-color:var(--gold);color:var(--gold-lt)}
+  .textlink{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--navy-800);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
+  .textlink:hover{color:var(--gold)}
+
+  /* ---------- top bar + nav ---------- */
+  .topbar{background:var(--navy-900);color:#8FA1B3;font-size:12px;letter-spacing:.06em}
+  .topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+  .topbar a{color:#fff;text-decoration:none}
+  .topbar a:hover{color:var(--gold-lt)}
+  .nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:20px;gap:24px}
+  .logo{text-decoration:none;line-height:1.25}
+  .logo .mark{font-family:var(--serif);font-size:20px;color:var(--navy-800);letter-spacing:.02em}
+  .logo .tag{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-top:2px}
+  .nav-links{display:flex;gap:34px;list-style:none;align-items:center}
+  .nav-links a{text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--ink);padding:6px 0;border-bottom:1px solid transparent}
+  .nav-links a:hover{border-bottom-color:var(--gold);color:var(--navy-800)}
+  .nav .btn{padding:13px 24px}
+  @media(max-width:1000px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden;background:var(--navy-900)}
+  .hero-slides{position:absolute;inset:0}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease;background-size:cover;background-position:center;transform:scale(1.04)}
+  .slide.on{opacity:1;transform:scale(1);transition:opacity 1.6s ease,transform 7s linear}
+  @media(prefers-reduced-motion:reduce){.slide{transition:none;transform:none}.slide.on{transform:none}}
+  /* Placeholder art — swap for real photography via background-image:url(...) */
+  .slide-firm{background-image:linear-gradient(155deg,#1D3A5B,#0C1B2C)}
+  .slide-litigation{background-image:linear-gradient(155deg,#182F4A,#0B1826),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 80px)}
+  .slide-business{background-image:linear-gradient(200deg,#22405F,#0C1B2C)}
+  .slide-environment{background-image:linear-gradient(165deg,#173E48,#0B1E2B)}
+  .slide-realestate{background-image:linear-gradient(145deg,#2E3E54,#0E1927)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(rgba(8,17,29,.35),rgba(8,17,29,.72))}
+  .hero-inner{position:relative;z-index:2;padding:60px 24px;max-width:960px}
+  .hero-kicker{font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt);font-weight:500}
+  .hero-kicker::after{content:"";display:block;width:56px;height:1px;background:var(--gold);margin:20px auto}
+  .hero-tagline{font-family:var(--serif);font-size:clamp(34px,5.4vw,64px);font-weight:400;line-height:1.14;min-height:2.3em}
+  .hero-tagline em{color:var(--gold-lt)}
+  .hero-ctas{margin-top:44px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .hero-ctas .btn-solid{background:var(--gold);border-color:var(--gold);color:var(--navy-900)}
+  .hero-ctas .btn-solid:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+  .slide-caption{position:absolute;left:32px;bottom:26px;z-index:2;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#8FA1B3}
+  .slide-dashes{position:absolute;right:32px;bottom:30px;z-index:2;display:flex;gap:10px}
+  .dash{width:26px;height:2px;background:rgba(255,255,255,.28);border:0;cursor:pointer;padding:0;transition:background .2s}
+  .dash.on{background:var(--gold)}
+  .scroll-cue{position:absolute;left:50%;transform:translateX(-50%);bottom:22px;z-index:2;color:#8FA1B3;font-size:10px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none}
+  .scroll-cue::after{content:"";display:block;width:1px;height:38px;background:var(--gold);margin:10px auto 0;animation:drip 2s ease-in-out infinite}
+  @keyframes drip{0%{transform:scaleY(.15);transform-origin:top}55%{transform:scaleY(1)}100%{transform:scaleY(.15);transform-origin:bottom}}
+  @media(prefers-reduced-motion:reduce){.scroll-cue::after{animation:none}}
+
+  /* ---------- intro ---------- */
+  .intro{text-align:center;padding-bottom:90px}
+  .intro h1{font-size:clamp(30px,3.6vw,46px)}
+  .intro .sub{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--gold);margin-top:12px}
+  .intro p.body{max-width:780px;margin:30px auto 0;color:var(--ink-soft);font-size:17.5px}
+  .stats{display:flex;justify-content:center;gap:0;margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat{padding:28px 56px;text-align:center}
+  .stat+.stat{border-left:1px solid var(--line)}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:40px;color:var(--navy-800)}
+  .stat span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+  @media(max-width:720px){.stats{flex-direction:column}.stat+.stat{border-left:0;border-top:1px solid var(--line)}}
+
+  /* ---------- get started / router ---------- */
+  .getstarted{background:var(--navy-900);color:#fff;position:relative}
+  .getstarted::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 90px)}
+  .getstarted .wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative}
+  .getstarted h2{color:#fff}
+  .getstarted p{color:#9FB0C2;margin-top:18px;max-width:44ch}
+  .gs-points{list-style:none;margin-top:30px}
+  .gs-points li{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line-dk);font-size:14.5px;color:#C6D2DE}
+  .gs-points li:last-child{border-bottom:1px solid var(--line-dk)}
+  .gs-points .n{font-family:var(--serif);color:var(--gold-lt);font-size:15px}
+  @media(max-width:960px){.getstarted .wrap{grid-template-columns:1fr;gap:44px}}
+
+  .router{background:var(--paper);border:1px solid var(--line);padding:36px;color:var(--ink)}
+  .router .steps{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .router .steps b{color:var(--gold);font-weight:500}
+  .router h3{font-size:23px;margin:10px 0 4px}
+  .chips{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:22px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .chip{font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;text-align:left;padding:15px 14px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);cursor:pointer;transition:background .15s,color .15s;color:var(--ink)}
+  .chip:hover{background:var(--navy-800);color:#fff}
+  .router-step{display:none}
+  .router-step.active{display:block;animation:fade .3s ease both}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @media(prefers-reduced-motion:reduce){.router-step.active{animation:none}}
+  .match{margin-top:22px;border:1px solid var(--line);padding:20px;display:flex;gap:16px;align-items:center}
+  .match .avatar{width:54px;height:54px;background:var(--navy-800);color:var(--gold-lt);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:19px;flex-shrink:0}
+  .match strong{display:block;font-family:var(--serif);font-weight:400;font-size:17px;color:var(--navy-800)}
+  .match span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:18px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .slot{font-size:12.5px;font-weight:500;letter-spacing:.06em;padding:13px 6px;text-align:center;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);cursor:pointer;transition:background .15s,color .15s}
+  .slot:hover{background:var(--navy-800);color:#fff}
+  .router .back{background:none;border:none;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);cursor:pointer;margin-top:18px;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .router .note{margin-top:18px;font-size:12.5px;color:var(--ink-soft)}
+  .confirm{margin-top:22px;border:1px solid var(--gold);border-left:3px solid var(--gold);padding:20px;font-size:14.5px}
+  @media(max-width:560px){.chips{grid-template-columns:1fr 1fr}}
+
+  /* ---------- team ---------- */
+  .team{background:var(--stone)}
+  .team-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:52px}
+  .team-head p{color:var(--ink-soft);max-width:52ch;margin-top:14px}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .team-card{background:var(--paper);text-decoration:none;display:flex;flex-direction:column;transition:background .2s}
+  .team-card:hover{background:var(--stone)}
+  .team-card .photo{aspect-ratio:4/4.2;background:linear-gradient(165deg,var(--navy-700),var(--navy-900));display:flex;align-items:center;justify-content:center;color:var(--gold-lt);font-family:var(--serif);font-size:32px;filter:grayscale(30%)}
+  .team-card .info{padding:22px 22px 26px;display:flex;flex-direction:column;flex:1}
+  .team-card strong{font-family:var(--serif);font-weight:400;font-size:18.5px;color:var(--navy-800)}
+  .team-card .role{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:4px 0 10px}
+  .team-card p{font-size:13.5px;color:var(--ink-soft);flex:1}
+  .team-card .bio{margin-top:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--navy-800);border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:2px}
+
+  /* ---------- practice band ---------- */
+  .practice{background:var(--navy-800);color:#fff;text-align:center}
+  .practice h2{color:#fff}
+  .practice-links{margin-top:44px;display:flex;flex-wrap:wrap;justify-content:center;border-top:1px solid var(--line-dk);border-left:1px solid var(--line-dk);max-width:960px;margin-left:auto;margin-right:auto}
+  .practice-links a{flex:1 1 200px;text-decoration:none;font-family:var(--serif);font-size:17px;color:#DDE6EF;border-right:1px solid var(--line-dk);border-bottom:1px solid var(--line-dk);padding:22px 18px;transition:background .2s,color .2s}
+  .practice-links a:hover{background:rgba(184,147,74,.12);color:var(--gold-lt)}
+
+  /* ---------- quotes ---------- */
+  .quotes{text-align:center}
+  .quote-box{max-width:860px;margin:34px auto 0;min-height:210px}
+  .quote{display:none}
+  .quote.on{display:block;animation:fade .35s ease both}
+  .quote p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.3vw,25px);line-height:1.55;color:var(--navy-800)}
+  .quote cite{display:block;margin-top:22px;font-style:normal;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  .quote-dashes{display:flex;gap:10px;justify-content:center;margin-top:30px}
+  .quote-dashes .dash{background:var(--line)}
+  .quote-dashes .dash.on{background:var(--gold)}
+  .quotes .disclaimer{margin-top:30px;font-size:12px;color:var(--ink-soft)}
+
+  /* ---------- pillars: numbered editorial list ---------- */
+  .pillars{background:var(--stone)}
+  .pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 72px}
+  .pillar{display:flex;gap:24px;padding:30px 0;border-bottom:1px solid var(--line)}
+  .pillar .n{font-family:var(--serif);font-size:15px;color:var(--gold);padding-top:4px;min-width:32px}
+  .pillar h3{font-size:19px}
+  .pillar p{font-size:14.5px;color:var(--ink-soft);margin-top:6px}
+  @media(max-width:860px){.pillar-grid{grid-template-columns:1fr}}
+
+  /* ---------- news ---------- */
+  .news-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:52px}
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .news-card{background:var(--paper);padding:30px 28px 32px;text-decoration:none;display:flex;flex-direction:column;transition:background .2s}
+  .news-card:hover{background:var(--stone)}
+  .news-meta{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+  .cat-win{color:var(--gold)}
+  .cat-article{color:var(--navy-700)}
+  .cat-news{color:var(--ink-soft)}
+  .news-date{color:var(--ink-soft);letter-spacing:.12em}
+  .news-card h3{font-size:19px;line-height:1.32}
+  .news-card p{font-size:14px;color:var(--ink-soft);margin-top:12px;flex:1}
+  .news-card .byline{font-size:12px;color:var(--ink-soft);margin-top:18px;font-style:italic;font-family:var(--serif)}
+  .news-card .go{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--navy-800);border-bottom:1px solid var(--gold);align-self:flex-start;padding-bottom:2px}
+  .news-disclaimer{margin-top:24px;font-size:12px;color:var(--ink-soft)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-900);color:#8FA1B3;font-size:14px}
+  footer .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-top:70px;padding-bottom:50px}
+  footer h4{font-family:var(--serif);font-weight:400;color:#fff;font-size:17px;margin-bottom:18px}
+  footer .fk{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:18px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:10px}
+  footer a{color:#C6D2DE;text-decoration:none;font-size:13.5px}
+  footer a:hover{color:var(--gold-lt)}
+  .foot-legal{border-top:1px solid var(--line-dk);padding:20px 32px;text-align:center;font-size:12px;color:#66798C;letter-spacing:.04em}
+  @media(max-width:900px){footer .wrap{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>2900 East Beltline Ave NE, Grand Rapids, MI 49525</span>
+    <span>Mon–Fri 8:30–5:00 &nbsp;·&nbsp; <a href="tel:6163642900">(616) 364-2900</a></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <div class="mark">Bosch Killman VanderWal, P.C.</div>
+      <div class="tag">Attorneys at Law · Est. 1910</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#practice">What We Do</a></li>
+      <li><a href="#news">Insights</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a class="btn btn-solid" href="#get-started">Book a Consultation</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-slides" aria-hidden="true">
+    <div class="slide slide-firm on" data-caption="Our attorneys — firm group photo" data-tagline='Counsel West Michigan has trusted <em>since 1910.</em>'></div>
+    <div class="slide slide-litigation" data-caption="Litigation — Kent County courtroom" data-tagline='Prepared <em>before</em> you reach the courtroom.'></div>
+    <div class="slide slide-business" data-caption="Business — downtown Grand Rapids" data-tagline='Built for the businesses <em>building</em> West Michigan.'></div>
+    <div class="slide slide-environment" data-caption="Environment — Lake Michigan shoreline" data-tagline='Protecting what makes Michigan, <em>Michigan.</em>'></div>
+    <div class="slide slide-realestate" data-caption="Real estate — West Michigan" data-tagline='Solid ground for every <em>closing.</em>'></div>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Bosch Killman VanderWal, P.C.</div>
+    <div class="hero-tagline" id="hero-tagline">Counsel West Michigan has trusted <em>since 1910.</em></div>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="#get-started">Get Started</a>
+      <a class="btn btn-line-w" href="tel:6163642900">Call (616) 364-2900</a>
+    </div>
+  </div>
+  <span class="slide-caption" id="slide-caption">Our attorneys — firm group photo</span>
+  <div class="slide-dashes" id="slide-dots" role="tablist" aria-label="Hero images"></div>
+  <a class="scroll-cue" href="#who-we-are">Scroll</a>
+</header>
+
+<!-- Intro -->
+<section class="intro" id="who-we-are">
+  <div class="wrap">
+    <div class="kicker center">Who We Are</div>
+    <h1>A Century of West Michigan Law</h1>
+    <div class="sub">Grand Rapids, since 1910.</div>
+    <p class="body">Bosch Killman VanderWal is a full-service firm of nine attorneys serving the region's businesses and families. From business disputes and litigation to estate plans, real estate, and family law, our attorneys bring the judgment that only a century of West Michigan matters can build — with the responsiveness of a firm where you always know your lawyer.</p>
+    <div class="stats">
+      <div class="stat"><b>110<span style="font-size:24px;color:var(--gold)">+</span></b><span>Years in practice</span></div>
+      <div class="stat"><b>10</b><span>Practice areas</span></div>
+      <div class="stat"><b>9</b><span>Attorneys</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Get started / router -->
+<section class="getstarted" id="get-started">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Get Started</div>
+      <h2>The right attorney, on your calendar.</h2>
+      <p>Tell us what you need help with. We route you to the attorney who handles those matters and show their real availability.</p>
+      <ul class="gs-points">
+        <li><span class="n">01</span>Choose your legal matter</li>
+        <li><span class="n">02</span>We match you with the right attorney</li>
+        <li><span class="n">03</span>Book a phone conference or office meeting</li>
+      </ul>
+    </div>
+    <div class="router" id="router">
+      <p class="steps"><b id="step-label">Step 1 of 3</b> &nbsp;·&nbsp; Free, no obligation</p>
+      <h3 id="router-title">What do you need help with?</h3>
+      <div class="router-step active" id="step1">
+        <div class="chips" role="group" aria-label="Choose a practice area">
+          <button class="chip" data-area="Business">Business</button>
+          <button class="chip" data-area="Litigation">Litigation</button>
+          <button class="chip" data-area="Estate Planning">Estate Planning</button>
+          <button class="chip" data-area="Family Law">Family Law</button>
+          <button class="chip" data-area="Criminal">Criminal</button>
+          <button class="chip" data-area="Real Estate">Real Estate</button>
+          <button class="chip" data-area="Personal Injury">Personal Injury</button>
+          <button class="chip" data-area="Collection">Collection</button>
+          <button class="chip" data-area="Environmental">Environmental</button>
+          <button class="chip" data-area="Mediation">Mediation</button>
+        </div>
+        <p class="note">Your answer routes you to the attorney who handles these matters.</p>
+      </div>
+      <div class="router-step" id="step2">
+        <div id="match-list"></div>
+        <p class="note" id="slot-note">Choose a time for a phone conference or office meeting:</p>
+        <div class="slots" id="slots">
+          <button class="slot">Thu 10:00a</button><button class="slot">Thu 2:30p</button><button class="slot">Fri 9:00a</button>
+          <button class="slot">Fri 11:30a</button><button class="slot">Mon 1:00p</button><button class="slot">Mon 3:30p</button>
+        </div>
+        <button class="back" id="back1">&larr; Choose a different practice area</button>
+      </div>
+      <div class="router-step" id="step3">
+        <div class="confirm"><strong>You're booked.</strong> A confirmation email is on its way with your appointment details and a short intake form so <span id="confirm-name">your attorney</span> can prepare before you talk.</div>
+        <p class="note">Live version: this booking lands in Clio Scheduler, syncs to the attorney's Clio Manage calendar, and the lead appears in the Clio Grow pipeline automatically.</p>
+        <button class="back" id="back2">&larr; Start over</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+  <div class="wrap">
+    <div class="team-head">
+      <div>
+        <div class="kicker">Our Team</div>
+        <h2>The people behind 110 years of results.</h2>
+        <p>Photos are placeholders — professional headshots on a consistent backdrop will replace them.</p>
+      </div>
+      <a class="btn btn-line" href="#">All Attorneys</a>
+    </div>
+    <div class="team-grid">
+      <a class="team-card" href="#"><div class="photo">PB</div><div class="info"><strong>Peter D. Bosch</strong><span class="role">Shareholder</span><p>Counsels closely held businesses and property owners across West Michigan on formation, contracts, and transactions. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="#"><div class="photo">KK</div><div class="info"><strong>Kurt R. Killman</strong><span class="role">Shareholder</span><p>Litigates and mediates commercial and civil disputes in state and federal courts. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="#"><div class="photo">JH</div><div class="info"><strong>Julian J. Heidenreich</strong><span class="role">Attorney</span><p>Defends no-fault, auto negligence, and premises liability matters for insurers and businesses statewide. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="#"><div class="photo">JO</div><div class="info"><strong>Jason Osbourn</strong><span class="role">Attorney</span><p>Builds estate plans, wills, and trusts that protect families and their businesses. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="#"><div class="photo">KB</div><div class="info"><strong>Kara Beurkens</strong><span class="role">Attorney</span><p>Guides clients through divorce, custody, and support with discretion. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="#"><div class="photo">NR</div><div class="info"><strong>Nicholas C. Rizzo</strong><span class="role">Attorney</span><p>Recovers what businesses are owed through efficient collections practice. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- Practice band -->
+<section class="practice" id="practice">
+  <div class="wrap">
+    <div class="kicker center" style="color:var(--gold-lt)">What We Do</div>
+    <h2>Our Areas of Practice</h2>
+    <div class="practice-links">
+      <a href="#">Business</a><a href="#">Litigation</a><a href="#">Estate Planning</a>
+      <a href="#">Family Law</a><a href="#">Criminal</a><a href="#">Real Estate</a><a href="#">Personal Injury</a>
+      <a href="#">Collection</a><a href="#">Environmental</a><a href="#">Mediation</a>
+    </div>
+  </div>
+</section>
+
+<!-- Quotes -->
+<section class="quotes">
+  <div class="wrap">
+    <div class="kicker center">Why Clients Choose Our Firm</div>
+    <div class="quote-box">
+      <blockquote class="quote on"><p>"They guided our family business through a dispute we thought would end it. Clear advice, straight answers, and a result we could live with." <em>(placeholder testimonial)</em></p><cite>Client Name — West Michigan Business Owner</cite></blockquote>
+      <blockquote class="quote"><p>"Our estate plan was handled start to finish in three meetings. Everything explained in plain English." <em>(placeholder testimonial)</em></p><cite>Client Name — Grand Rapids</cite></blockquote>
+      <blockquote class="quote"><p>"Responsive, prepared, and honest about our options at every step of the litigation." <em>(placeholder testimonial)</em></p><cite>Client Name — Kent County</cite></blockquote>
+    </div>
+    <div class="quote-dashes" id="quote-dots"></div>
+    <p class="disclaimer">Testimonials reflect individual experiences. Prior results do not guarantee a similar outcome.</p>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="kicker">Why BKV</div>
+    <h2 style="margin-bottom:44px">What a century of practice builds.</h2>
+    <div class="pillar-grid">
+      <div class="pillar"><span class="n">01</span><div><h3>Deep Local Experience</h3><p>Founded in Grand Rapids in 1910 — our attorneys know West Michigan's courts, businesses, and communities because we've served them for four generations.</p></div></div>
+      <div class="pillar"><span class="n">02</span><div><h3>Full-Service Bench</h3><p>Ten practice areas under one roof. When your business dispute touches real estate and your estate plan, you don't need three firms.</p></div></div>
+      <div class="pillar"><span class="n">03</span><div><h3>You Know Your Lawyer</h3><p>Direct access to the attorney handling your matter — not an associate you've never met. Book time on their calendar right from this site.</p></div></div>
+      <div class="pillar"><span class="n">04</span><div><h3>Straight Answers</h3><p>We tell you what you need to hear about your case's strengths, weaknesses, and costs — before you commit.</p></div></div>
+      <div class="pillar"><span class="n">05</span><div><h3>Cost-Conscious</h3><p>Right-sized staffing and efficient practice keep quality high and bills predictable.</p></div></div>
+      <div class="pillar"><span class="n">06</span><div><h3>Modern Practice</h3><p>Online booking, digital intake, and secure client communication — a 1910 firm with 2026 tools.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- News & Insights -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="news-head">
+      <div>
+        <div class="kicker">News &amp; Insights</div>
+        <h2>Recent wins, legal updates, and firm news.</h2>
+      </div>
+      <a class="btn btn-line" href="#">View All Posts</a>
+    </div>
+    <div class="news-grid">
+      <a class="news-card" href="#">
+        <div class="news-meta"><span class="cat-win">Firm Win</span><span class="news-date">July 2026</span></div>
+        <h3>Summary disposition granted in Kent County premises liability suit</h3>
+        <p>The court dismissed all claims against our client, a West Michigan retailer, finding no genuine issue of material fact on notice. <em>(placeholder — swap in a real result)</em></p>
+        <span class="byline">Julian J. Heidenreich</span><span class="go">Read More</span>
+      </a>
+      <a class="news-card" href="#">
+        <div class="news-meta"><span class="cat-article">Article</span><span class="news-date">June 2026</span></div>
+        <h3>What Michigan's no-fault fee schedule means for your claim in 2026</h3>
+        <p>A plain-English walkthrough of how the fee schedule affects medical provider reimbursement — and what claimants and insurers should watch for. <em>(placeholder)</em></p>
+        <span class="byline">Attorney byline</span><span class="go">Read More</span>
+      </a>
+      <a class="news-card" href="#">
+        <div class="news-meta"><span class="cat-news">Firm News</span><span class="news-date">May 2026</span></div>
+        <h3>BKV now offers online consultation booking</h3>
+        <p>Prospective clients can now choose a practice area, complete intake, and book directly on the right attorney's calendar — all from this site. <em>(placeholder)</em></p>
+        <span class="byline">Firm announcement</span><span class="go">Read More</span>
+      </a>
+    </div>
+    <p class="news-disclaimer">Results described are specific to their facts. Prior results do not guarantee a similar outcome.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Bosch Killman VanderWal, P.C.</h4>
+      <p>2900 East Beltline Ave NE<br>Grand Rapids, MI 49525</p>
+      <p style="margin-top:12px">Phone: (616) 364-2900<br>Fax: (616) 364-2901</p>
+    </div>
+    <div>
+      <div class="fk">What We Do</div>
+      <ul><li><a href="#practice">Practice Areas</a></li><li><a href="#get-started">Book a Consultation</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+    <div>
+      <div class="fk">Firm</div>
+      <ul><li><a href="#who-we-are">Who We Are</a></li><li><a href="#team">Our Team</a></li><li><a href="#news">News &amp; Insights</a></li></ul>
+    </div>
+    <div>
+      <div class="fk">Connect</div>
+      <ul><li><a href="https://www.facebook.com/BKVPC">Facebook</a></li><li><a href="#">LinkedIn</a></li></ul>
+    </div>
+  </div>
+  <div class="foot-legal">© 2026 Bosch Killman VanderWal, P.C. All rights reserved. Attorney advertising — prior results do not guarantee a similar outcome.</div>
+</footer>
+
+<script>
+// Routing map per Julian (subject to change). Areas can route to MULTIPLE attorneys —
+// the client is asked to choose between them (e.g., Personal Injury).
+const ROUTES = {
+  "Business":        [{name:"Julian J. Heidenreich", initials:"JH", focus:"Business"}],
+  "Litigation":      [{name:"Julian J. Heidenreich", initials:"JH", focus:"Litigation"}],
+  "Estate Planning": [{name:"Jason Osbourn",         initials:"JO", focus:"Estate Planning & Probate"}],
+  "Family Law":      [{name:"Kara Beurkens",         initials:"KB", focus:"Family Law"}],
+  "Criminal":        [{name:"Kara Beurkens",         initials:"KB", focus:"Criminal Law"}],
+  "Real Estate":     [{name:"Julian J. Heidenreich", initials:"JH", focus:"Real Estate"}],
+  "Personal Injury": [{name:"Julian J. Heidenreich", initials:"JH", focus:"Personal Injury"},
+                      {name:"Andrea Remynse Koop",   initials:"AK", focus:"Personal Injury"}],
+  "Collection":      [{name:"Nicholas C. Rizzo",     initials:"NR", focus:"Collections"}],
+  "Environmental":   [{name:"Peter D. Bosch",        initials:"PB", focus:"Environmental Law"}],
+  "Mediation":       [{name:"Kurt R. Killman",       initials:"KK", focus:"Mediation & Dispute Resolution"}]
+};
+
+// Hero slideshow with rotating taglines
+const slides=[...document.querySelectorAll('.slide')];
+const cap=document.getElementById('slide-caption');
+const tag=document.getElementById('hero-tagline');
+const dotsBox=document.getElementById('slide-dots');
+let idx=0,timer;
+slides.forEach((s,i)=>{
+  const d=document.createElement('button');d.className='dash'+(i===0?' on':'');d.setAttribute('aria-label','Show image '+(i+1));
+  d.addEventListener('click',()=>{go(i);restart();});dotsBox.appendChild(d);
+});
+const dots=[...dotsBox.children];
+function go(i){
+  slides[idx].classList.remove('on');dots[idx].classList.remove('on');
+  idx=i;slides[idx].classList.add('on');dots[idx].classList.add('on');
+  cap.textContent=slides[idx].dataset.caption;
+  tag.innerHTML=slides[idx].dataset.tagline;
+}
+function restart(){clearInterval(timer);timer=setInterval(()=>go((idx+1)%slides.length),6000);}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){restart();}
+
+// Intake router
+const step1=document.getElementById('step1'),step2=document.getElementById('step2'),step3=document.getElementById('step3');
+const label=document.getElementById('step-label'),title=document.getElementById('router-title');
+const matchList=document.getElementById('match-list');
+let chosen=null;
+// Round-robin counters for areas shared by multiple attorneys (e.g., Personal Injury).
+// DEMO ONLY: this counter resets on page reload. The real site tracks the rotation
+// server-side so leads split evenly across all visitors, not per visitor.
+const rr={};
+function show(step,lbl,ttl){
+  [step1,step2,step3].forEach(s=>s.classList.remove('active'));
+  step.classList.add('active');label.textContent=lbl;title.textContent=ttl;
+}
+function assign(area){
+  const list=ROUTES[area];
+  if(list.length===1) return list[0];
+  rr[area]=(rr[area]||0);
+  const a=list[rr[area]%list.length];
+  rr[area]++;
+  return a;
+}
+document.querySelectorAll('.chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    chosen=assign(chip.dataset.area);
+    matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
+    show(step2,'Step 2 of 3','Pick a time with '+chosen.name.split(' ')[0]);
+  });
+});
+document.querySelectorAll('.slot').forEach(s=>s.addEventListener('click',()=>{
+  document.getElementById('confirm-name').textContent=chosen?chosen.name:'your attorney';
+  show(step3,'Step 3 of 3','Consultation requested');
+}));
+document.getElementById('back1').addEventListener('click',()=>show(step1,'Step 1 of 3','What do you need help with?'));
+document.getElementById('back2').addEventListener('click',()=>show(step1,'Step 1 of 3','What do you need help with?'));
+
+// Testimonial rotator
+const quotes=[...document.querySelectorAll('.quote')];
+const qDots=document.getElementById('quote-dots');
+let qi=0,qTimer;
+quotes.forEach((q,i)=>{
+  const d=document.createElement('button');d.className='dash'+(i===0?' on':'');d.setAttribute('aria-label','Show testimonial '+(i+1));
+  d.addEventListener('click',()=>{qGo(i);qRestart();});qDots.appendChild(d);
+});
+const qd=[...qDots.children];
+function qGo(i){quotes[qi].classList.remove('on');qd[qi].classList.remove('on');qi=i;quotes[qi].classList.add('on');qd[qi].classList.add('on');}
+function qRestart(){clearInterval(qTimer);qTimer=setInterval(()=>qGo((qi+1)%quotes.length),7000);}
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){qRestart();}
+</script>
+</body>
+</html>
