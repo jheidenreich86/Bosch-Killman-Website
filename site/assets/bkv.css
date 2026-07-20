@@ -65,6 +65,7 @@
   /* Placeholder art — swap for real photography via background-image:url(...) */
   .slide-firm{background-image:linear-gradient(155deg,#1D3A5B,#0C1B2C)}
   .slide-litigation{background-image:linear-gradient(155deg,#182F4A,#0B1826),repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 80px)}
+  .slide-insurance{background-image:linear-gradient(170deg,#1A3550,#0A1622),repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 70px)}
   .slide-business{background-image:linear-gradient(200deg,#22405F,#0C1B2C)}
   .slide-environment{background-image:linear-gradient(165deg,#173E48,#0B1E2B)}
   .slide-realestate{background-image:linear-gradient(145deg,#2E3E54,#0E1927)}

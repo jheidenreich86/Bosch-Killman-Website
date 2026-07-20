@@ -41,7 +41,8 @@
 <header class="hero">
   <div class="hero-slides" aria-hidden="true">
     <div class="slide slide-firm on" data-caption="Our attorneys — firm group photo" data-tagline='Counsel West Michigan has trusted <em>since 1910.</em>'></div>
-    <div class="slide slide-litigation" data-caption="Litigation — Kent County courtroom" data-tagline='Prepared <em>before</em> you reach the courtroom.'></div>
+    <div class="slide slide-litigation" data-caption="Insurance defense — West Michigan courts" data-tagline='Defense counsel carriers <em>rely on.</em>'></div>
+    <div class="slide slide-insurance" data-caption="Insurance defense — statewide" data-tagline='The defense bench West Michigan <em>insurers rely on.</em>'></div>
     <div class="slide slide-business" data-caption="Business — downtown Grand Rapids" data-tagline='Built for the businesses <em>building</em> West Michigan.'></div>
     <div class="slide slide-environment" data-caption="Environment — Lake Michigan shoreline" data-tagline='Protecting what makes Michigan, <em>Michigan.</em>'></div>
     <div class="slide slide-realestate" data-caption="Real estate — West Michigan" data-tagline='Solid ground for every <em>closing.</em>'></div>
@@ -66,10 +67,10 @@
     <div class="kicker center">Who We Are</div>
     <h1>A Century of West Michigan Law</h1>
     <div class="sub">Grand Rapids, since 1910.</div>
-    <p class="body">Bosch Killman VanderWal is a full-service firm of nine attorneys serving the region's businesses and families. From business disputes and litigation to estate plans, real estate, and family law, our attorneys bring the judgment that only a century of West Michigan matters can build — with the responsiveness of a firm where you always know your lawyer.</p>
+    <p class="body">Bosch Killman VanderWal is a full-service firm of nine attorneys serving the region's businesses and families. The core of our practice is insurance defense — no-fault, auto negligence, and premises liability matters for carriers and businesses statewide — surrounded by a full-service bench: business, litigation, estate plans, real estate, and family law. Our attorneys bring the judgment that only a century of West Michigan matters can build — with the responsiveness of a firm where you always know your lawyer.</p>
     <div class="stats">
       <div class="stat"><b>110<span style="font-size:24px;color:var(--gold)">+</span></b><span>Years in practice</span></div>
-      <div class="stat"><b>10</b><span>Practice areas</span></div>
+      <div class="stat"><b>11</b><span>Practice areas</span></div>
       <div class="stat"><b>9</b><span>Attorneys</span></div>
     </div>
   </div>
@@ -95,6 +96,8 @@
         <div class="chips" role="group" aria-label="Choose a practice area">
           <button class="chip" data-area="Business">Business</button>
           <button class="chip" data-area="Litigation">Litigation</button>
+          <button class="chip" data-area="Insurance Defense">Insurance Defense</button>
+          <button class="chip" data-area="Insurance Defense">Insurance Defense</button>
           <button class="chip" data-area="Estate Planning">Estate Planning</button>
           <button class="chip" data-area="Family Law">Family Law</button>
           <button class="chip" data-area="Criminal">Criminal</button>
@@ -146,7 +149,7 @@
     <div class="kicker center" style="color:var(--gold-lt)">What We Do</div>
     <h2>Our Areas of Practice</h2>
     <div class="practice-links">
-      <a href="practice/business.html">Business</a><a href="practice/litigation.html">Litigation</a><a href="practice/estate-planning.html">Estate Planning</a>
+      <a href="practice/insurance-defense.html">Insurance Defense</a><a href="practice/business.html">Business</a><a href="practice/litigation.html">Litigation</a><a href="practice/insurance-defense.html">Insurance Defense</a><a href="practice/estate-planning.html">Estate Planning</a>
       <a href="practice/family-law.html">Family Law</a><a href="practice/criminal.html">Criminal</a><a href="practice/real-estate.html">Real Estate</a><a href="practice/personal-injury.html">Personal Injury</a>
       <a href="practice/collection.html">Collection</a><a href="practice/environmental.html">Environmental</a><a href="practice/mediation.html">Mediation</a>
     </div>
@@ -289,7 +292,18 @@ document.querySelectorAll('.chip').forEach(chip=>{
     const area=chip.dataset.area;
     chosen=assign(area);
     matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
-    intakeBtn.href=FORM_LINKS[area];
+    if(area==='Insurance Defense'){
+      // Carrier-facing: direct contact, not consumer intake
+      intakeBtn.href='practice/insurance-defense.html';
+      intakeBtn.removeAttribute('target');
+      intakeBtn.textContent='Assign a Case / Learn More';
+      document.getElementById('slot-note').textContent='Carriers and claims professionals: see our insurance defense practice and reach Julian\u2019s desk directly \u2014 new assignments are acknowledged the same business day.';
+    }else{
+      intakeBtn.href=FORM_LINKS[area];
+      intakeBtn.setAttribute('target','_blank');
+      intakeBtn.textContent='Start Intake';
+      document.getElementById('slot-note').textContent='Complete a short intake \u2014 about three minutes \u2014 and your matter goes straight to this attorney. We follow up within one business day to schedule a free phone conference or office meeting.';
+    }
     show(step2,'Step 2 of 3','You\u2019re matched with '+chosen.name.split(' ')[0]);
   });
 });

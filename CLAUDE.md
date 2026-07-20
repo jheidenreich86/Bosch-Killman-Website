@@ -38,9 +38,14 @@ product, but it follows the same engineering discipline.
   should read a small config, never hard-code attorney routing in components.
 - Personal Injury round-robin: server-side counter alternating
   Heidenreich/Koop. Must persist across requests (not client-side).
-- Ten practice areas: Business, Litigation, Estate Planning, Family Law,
-  Criminal, Real Estate, Personal Injury, Collection, Environmental,
-  Mediation. No bankruptcy — the firm doesn't practice it.
+- Eleven practice areas: Business, Litigation, Insurance Defense, Estate
+  Planning, Family Law, Criminal, Real Estate, Personal Injury, Collection,
+  Environmental, Mediation. No bankruptcy — the firm doesn't practice it.
+- Insurance defense is the core of the litigation practice and is featured
+  (balanced with full-service positioning). It is carrier-facing: direct
+  contact to Heidenreich's desk, NO consumer intake form. The firm handles
+  BOTH defense and plaintiff-side injury work; the two pages cross-link and
+  conflicts are checked per engagement.
 - Launch requires: redirect map from old Wix URLs (including the retired
   bankruptcy page), proper page titles/descriptions, and NO noindex tags.
 
