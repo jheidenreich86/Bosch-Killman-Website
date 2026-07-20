@@ -84,7 +84,7 @@ Fill this in as links are generated; it's everything the website build needs fro
 
 | Practice area | Attorney | Intake form link/embed | Phone conf. link | Office mtg. link |
 |---|---|---|---|---|
-| Insurance Defense | Julian Heidenreich | No public form by design — carrier-facing direct contact (site page CTA) | | |
+| Insurance Defense | Group: Bosch, Killman, Heidenreich, Koop | No public form by design — carrier-facing direct contact (site page CTA) | | |
 | Business | Julian Heidenreich | https://boschkillman.cliogrow.com/intake/f7ab82f7b62379ec58de0203fb3dc307 | | |
 | Litigation | Julian Heidenreich | https://boschkillman.cliogrow.com/intake/cfa44ef45ca820f723ed5afca3209c2f | | |
 | Estate Planning | Jason Osbourn | | | |

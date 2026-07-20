@@ -290,15 +290,20 @@ function assign(area){
 document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
     const area=chip.dataset.area;
-    chosen=assign(area);
-    matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
     if(area==='Insurance Defense'){
+      // Present the whole defense group — adjusters already know their panel counsel
+      matchList.innerHTML=ROUTES[area].map(a=>'<div class="match" style="margin-top:10px"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></div>').join('');
       // Carrier-facing: direct contact, not consumer intake
       intakeBtn.href='practice/insurance-defense.html';
       intakeBtn.removeAttribute('target');
       intakeBtn.textContent='Assign a Case / Learn More';
-      document.getElementById('slot-note').textContent='Carriers and claims professionals: see our insurance defense practice and reach Julian\u2019s desk directly \u2014 new assignments are acknowledged the same business day.';
-    }else{
+      document.getElementById('slot-note').textContent='Carriers and claims professionals: call the office and ask for the attorney handling your file \u2014 new assignments are acknowledged the same business day.';
+      show(step2,'Our Defense Group','Insurance defense practice group');
+      return;
+    }
+    chosen=assign(area);
+    matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
+    {
       intakeBtn.href=FORM_LINKS[area];
       intakeBtn.setAttribute('target','_blank');
       intakeBtn.textContent='Start Intake';

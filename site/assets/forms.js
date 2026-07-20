@@ -27,7 +27,10 @@ const FORM_LINKS = {
 const ROUTES = {
   "Business":        [{name:"Julian J. Heidenreich", initials:"JH", focus:"Business"}],
   "Litigation":      [{name:"Julian J. Heidenreich", initials:"JH", focus:"Litigation"}],
-  "Insurance Defense":[{name:"Julian J. Heidenreich", initials:"JH", focus:"Insurance Defense"}],
+  "Insurance Defense":[{name:"Peter D. Bosch",        initials:"PB", focus:"Insurance Defense"},
+                       {name:"Kurt R. Killman",      initials:"KK", focus:"Insurance Defense"},
+                       {name:"Julian J. Heidenreich",initials:"JH", focus:"Insurance Defense"},
+                       {name:"Andrea Remynse Koop",  initials:"AK", focus:"Insurance Defense"}],
   "Estate Planning": [{name:"Jason Osbourn",         initials:"JO", focus:"Estate Planning & Probate"}],
   "Family Law":      [{name:"Kara Beurkens",         initials:"KB", focus:"Family Law"}],
   "Criminal":        [{name:"Kara Beurkens",         initials:"KB", focus:"Criminal Law"}],

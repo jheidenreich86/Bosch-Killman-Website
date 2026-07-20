@@ -43,7 +43,9 @@ product, but it follows the same engineering discipline.
   Environmental, Mediation. No bankruptcy — the firm doesn't practice it.
 - Insurance defense is the core of the litigation practice and is featured
   (balanced with full-service positioning). It is carrier-facing: direct
-  contact to Heidenreich's desk, NO consumer intake form. The firm handles
+  contact (adjusters already know their panel counsel), NO consumer intake
+  form, no routing/matching step. Defense group: Bosch, Killman,
+  Heidenreich, Koop — always presented as a group, not routed to one. The firm handles
   BOTH defense and plaintiff-side injury work; the two pages cross-link and
   conflicts are checked per engagement.
 - Launch requires: redirect map from old Wix URLs (including the retired
