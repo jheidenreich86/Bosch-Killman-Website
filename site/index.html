@@ -79,7 +79,7 @@
 <!-- Get started / router -->
 <section class="getstarted" id="get-started">
   <div class="wrap">
-    <div>
+    <div id="gs-copy">
       <div class="kicker">Get Started</div>
       <h2>The right attorney, on your calendar.</h2>
       <p>Tell us what you need help with. We route you to the attorney who handles those matters and show their real availability.</p>
@@ -90,7 +90,7 @@
       </ul>
     </div>
     <div class="router" id="router">
-      <p class="steps"><b id="step-label">Step 1 of 3</b> &nbsp;·&nbsp; Free, no obligation</p>
+      <p class="steps"><b id="step-label">Step 1 of 3</b></p>
       <h3 id="router-title">What do you need help with?</h3>
       <div class="router-step active" id="step1">
         <div class="chips" role="group" aria-label="Choose a practice area">
@@ -111,7 +111,7 @@
       </div>
       <div class="router-step" id="step2">
         <div id="match-list"></div>
-        <p class="note" id="slot-note">Complete a short intake — about three minutes — and your matter goes straight to this attorney. We follow up within one business day to schedule a free phone conference or office meeting.</p>
+        <p class="note" id="slot-note">Complete a short intake — about three minutes — and your matter goes straight to this attorney. We follow up within one business day to schedule a phone conference or office meeting.</p>
         <a class="btn btn-solid" id="router-intake" href="#" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:18px">Start Intake</a>
         <p class="note" style="margin-top:14px">Prefer to talk first? <a href="tel:6163642900" style="color:var(--navy-800)">(616) 364-2900</a></p>
         <p class="note" style="font-size:11.5px">Submitting the form does not create an attorney–client relationship, and the firm cannot represent you until conflicts are cleared.</p>
@@ -292,6 +292,7 @@ document.querySelectorAll('.chip').forEach(chip=>{
     const area=chip.dataset.area;
     if(area==='Insurance Defense'){
       // Present the whole defense group — adjusters already know their panel counsel
+      document.getElementById('gs-copy').style.display='none';
       matchList.innerHTML=ROUTES[area].map(a=>'<div class="match" style="margin-top:10px"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></div>').join('');
       // Carrier-facing: direct contact, not consumer intake
       intakeBtn.href='practice/insurance-defense.html';
@@ -301,18 +302,19 @@ document.querySelectorAll('.chip').forEach(chip=>{
       show(step2,'Our Defense Group','Insurance defense practice group');
       return;
     }
+    document.getElementById('gs-copy').style.display='';
     chosen=assign(area);
     matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
     {
       intakeBtn.href=FORM_LINKS[area];
       intakeBtn.setAttribute('target','_blank');
       intakeBtn.textContent='Start Intake';
-      document.getElementById('slot-note').textContent='Complete a short intake \u2014 about three minutes \u2014 and your matter goes straight to this attorney. We follow up within one business day to schedule a free phone conference or office meeting.';
+      document.getElementById('slot-note').textContent='Complete a short intake \u2014 about three minutes \u2014 and your matter goes straight to this attorney. We follow up within one business day to schedule a phone conference or office meeting.';
     }
     show(step2,'Step 2 of 3','You\u2019re matched with '+chosen.name.split(' ')[0]);
   });
 });
-document.getElementById('back1').addEventListener('click',()=>show(step1,'Step 1 of 3','What do you need help with?'));
+document.getElementById('back1').addEventListener('click',()=>{document.getElementById('gs-copy').style.display='';show(step1,'Step 1 of 3','What do you need help with?');});
 
 // Testimonial rotator
 const quotes=[...document.querySelectorAll('.quote')];
