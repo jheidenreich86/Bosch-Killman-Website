@@ -85,14 +85,14 @@ Fill this in as links are generated; it's everything the website build needs fro
 | Practice area | Attorney | Intake form link/embed | Phone conf. link | Office mtg. link |
 |---|---|---|---|---|
 | Business | Julian Heidenreich | https://boschkillman.cliogrow.com/intake/f7ab82f7b62379ec58de0203fb3dc307 | | |
-| Litigation | Julian Heidenreich | https://boschkillman.cliogrow.com/intake/cfa44ef45ca820f723ed5afca3209c2f | | |
+| Litigation | TBD | | | |
 | Estate Planning | Jason Osbourn | | | |
-| Family Law | Kara Beurkens | https://boschkillman.cliogrow.com/intake/663a0f7a51c9323c78565306833950c6 | | |
-| Real Estate | Julian Heidenreich | https://boschkillman.cliogrow.com/intake/8b0c3314ace8b535d47acb9043435914 | | |
-| Personal Injury | Julian Heidenreich & Andrea Koop (site round-robin) | https://boschkillman.cliogrow.com/intake/aa04e5cb01b6a6e34b2e38318b264b43 | | |
-| Collection | Nick Rizzo | https://boschkillman.cliogrow.com/intake/2e96aaf8fdf960d316e887f542931018 | | |
-| Environmental | TBD | FORM NOT YET BUILT — site falls back to Business form | | |
-| Mediation | TBD | FORM NOT YET BUILT — site falls back to Business form | | |
+| Family Law | TBD | | | |
+| Real Estate | TBD | | | |
+| Personal Injury | TBD | | | |
+| Collection | TBD | | | |
+| Environmental | TBD | | | |
+| Mediation | TBD | | | |
 
 ## Phase 7 — End-to-end test (before launch)
 
