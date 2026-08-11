@@ -117,3 +117,49 @@ Static multi-page site generated from the approved v3 design for the board demo:
 - Areas without a live form temporarily fall back to the Business form link so no button dead-ends. **Replace fallbacks before public launch.**
 - 10 practice pages + attorneys + contact pages added under `site/`.
 - Scheduler booking intentionally deferred (calendar sync incomplete); router copy promises follow-up within one business day instead.
+
+
+---
+
+## Scheduling model — post-board revision (2026-07-24)
+
+Board feedback: Kurt Killman and Peter Bosch opt OUT of automated scheduling.
+All scheduling for their matters is handled personally by their shared
+assistant, **Chenney Ward (cward@bkvpc.com)**.
+
+Two-track model:
+
+| Track | Attorneys | Flow |
+|---|---|---|
+| Automated (Clio Scheduler) | Heidenreich, Beurkens, Osbourn, Koop, Rizzo | Intake form → automated workflow emails booking link (48-hr min notice = conflict-check window) → client self-schedules → status auto-advances to Consultation Scheduled |
+| Assistant-managed | Killman, Bosch | Intake form / direct call → Chenney Ward schedules manually → status updated by hand |
+
+Consequences:
+- Calendar-sync prerequisite now applies to **five** attorneys, not seven.
+  Killman and Bosch removed from the sync checklist.
+- Chenney Ward needs a Clio Grow user seat (check license availability under
+  Settings → Account).
+- **SUPERSEDED (2026-07-24, same day):** Killman and Bosch want **no intake
+  forms at all** for matters assigned to them. Environmental and Mediation
+  intake forms will NOT be built. Those practice areas are direct-contact on
+  the website (phone / contact page), matching Insurance Defense.
+  → Chenney Ward's Grow seat is therefore optional, not required: no web
+  leads flow to her. Revisit only if Killman/Bosch later accept forms.
+  → Litigation KEEPS its form because those leads route to Heidenreich.
+- Do NOT publish cward@bkvpc.com on the public website (spam / bypasses
+  office routing). Internal Clio config only.
+- Website language: Scheduler areas will say "you'll receive a link to choose
+  a time"; Environmental & Mediation keep "we follow up within one business
+  day."
+
+
+## Final intake model (2026-07-24)
+
+**Form-based (8 forms, all live):** Business, Litigation, Estate Planning,
+Family Law, Criminal, Real Estate, Personal Injury, Collection.
+
+**Direct-contact, no form (3 areas):** Insurance Defense (group: Bosch,
+Killman, Heidenreich, Koop), Environmental (Bosch), Mediation (Killman).
+Website CTA for these is the office phone line, not an intake form.
+
+All ten practice-area form links are wired; **no fallbacks remain**.

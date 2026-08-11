@@ -2,8 +2,10 @@
    BKV — Clio Grow public intake form links.
    One entry per practice area. As each form goes live in Clio,
    paste its "Copy link to public form" URL here.
-   Any area still set to FALLBACK uses the Business form so no
-   button dead-ends (demo safety net). Replace before launch.
+   Four areas are direct-contact by design (no Clio form): Insurance
+   Defense, Environmental, Mediation — these point at their practice
+   page, whose CTA is a phone call. Killman and Bosch take no web-form
+   leads per firm decision 2026-07-24.
    ============================================================ */
 const FALLBACK = "https://boschkillman.cliogrow.com/intake/f7ab82f7b62379ec58de0203fb3dc307";
 
@@ -17,8 +19,8 @@ const FORM_LINKS = {
   "Real Estate": "https://boschkillman.cliogrow.com/intake/8b0c3314ace8b535d47acb9043435914",
   "Personal Injury": "https://boschkillman.cliogrow.com/intake/aa04e5cb01b6a6e34b2e38318b264b43",
   "Collection": "https://boschkillman.cliogrow.com/intake/2e96aaf8fdf960d316e887f542931018",
-  "Environmental":   FALLBACK,
-  "Mediation":       FALLBACK
+  "Environmental":   "practice/environmental.html", /* direct contact — no form (Bosch) */
+  "Mediation":       "practice/mediation.html"      /* direct contact — no form (Killman) */
 };
 
 /* Routing map — mirrors docs/clio-configuration-guide.md.

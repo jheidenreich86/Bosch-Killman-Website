@@ -41,6 +41,8 @@ product, but it follows the same engineering discipline.
 - Eleven practice areas: Business, Litigation, Insurance Defense, Estate
   Planning, Family Law, Criminal, Real Estate, Personal Injury, Collection,
   Environmental, Mediation. No bankruptcy — the firm doesn't practice it.
+- Killman and Bosch take no web intake forms for their matters. Environmental
+  and Mediation are direct-contact areas (phone), as is Insurance Defense.
 - Insurance defense is the core of the litigation practice and is featured
   (balanced with full-service positioning). It is carrier-facing: direct
   contact (adjusters already know their panel counsel), NO consumer intake

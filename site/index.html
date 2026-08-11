@@ -275,6 +275,7 @@ let chosen=null;
 // Round-robin for shared areas (e.g., Personal Injury).
 // DEMO ONLY: counter resets on reload; production tracks rotation server-side.
 const rr={};
+const DIRECT_CONTACT=['Insurance Defense','Environmental','Mediation'];
 function show(step,lbl,ttl){
   [step1,step2].forEach(s=>s.classList.remove('active'));
   step.classList.add('active');label.textContent=lbl;title.textContent=ttl;
@@ -290,16 +291,23 @@ function assign(area){
 document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
     const area=chip.dataset.area;
-    if(area==='Insurance Defense'){
-      // Present the whole defense group — adjusters already know their panel counsel
+    if(DIRECT_CONTACT.indexOf(area)>-1){
+      // Direct-contact areas: no web intake form (firm decision 2026-07-24)
       document.getElementById('gs-copy').style.display='none';
       matchList.innerHTML=ROUTES[area].map(a=>'<div class="match" style="margin-top:10px"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></div>').join('');
       // Carrier-facing: direct contact, not consumer intake
       intakeBtn.href='practice/insurance-defense.html';
       intakeBtn.removeAttribute('target');
       intakeBtn.textContent='Assign a Case / Learn More';
-      document.getElementById('slot-note').textContent='Carriers and claims professionals: call the office and ask for the attorney handling your file \u2014 new assignments are acknowledged the same business day.';
-      show(step2,'Our Defense Group','Insurance defense practice group');
+      if(area==='Insurance Defense'){
+        intakeBtn.textContent='Assign a Case / Learn More';
+        document.getElementById('slot-note').textContent='Carriers and claims professionals: call the office and ask for the attorney handling your file \u2014 new assignments are acknowledged the same business day.';
+        show(step2,'Our Defense Group','Insurance defense practice group');
+      }else{
+        intakeBtn.textContent='Contact Us About This Matter';
+        document.getElementById('slot-note').textContent='This practice area is handled by direct contact rather than an online form. Call the office at (616) 364-2900 and we\u2019ll set up a time to talk, or use the contact page.';
+        show(step2,'Step 2 of 2','You\u2019re matched with '+ROUTES[area][0].name.split(' ')[0]);
+      }
       return;
     }
     document.getElementById('gs-copy').style.display='';
