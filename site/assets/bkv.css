@@ -260,3 +260,10 @@
 .bio-areas li:last-child{border-bottom:none}
 .bio-areas a{color:var(--navy-800);text-decoration:none;font-size:14.5px}
 .bio-areas a:hover{color:var(--gold)}
+
+/* ---------- homepage team invitation panel ---------- */
+.team-invite{background:var(--navy-900);color:#fff;position:relative}
+.team-invite::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 90px)}
+.team-invite .wrap{position:relative;max-width:760px}
+.team-invite h2{color:#fff;font-size:clamp(28px,3.4vw,42px);margin:14px 0 16px;max-width:20ch}
+.team-invite p{color:#9FB0C2;font-size:16.5px;line-height:1.75;max-width:60ch;margin-bottom:32px}
