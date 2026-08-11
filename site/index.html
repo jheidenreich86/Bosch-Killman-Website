@@ -71,7 +71,7 @@
     <div class="stats">
       <div class="stat"><b>110<span style="font-size:24px;color:var(--gold)">+</span></b><span>Years in practice</span></div>
       <div class="stat"><b>11</b><span>Practice areas</span></div>
-      <div class="stat"><b>9</b><span>Attorneys</span></div>
+      <div class="stat"><b>8</b><span>Attorneys</span></div>
     </div>
   </div>
 </section>
@@ -133,12 +133,12 @@
       <a class="btn btn-line" href="attorneys.html">All Attorneys</a>
     </div>
     <div class="team-grid">
-      <a class="team-card" href="attorneys.html"><div class="photo">PB</div><div class="info"><strong>Peter D. Bosch</strong><span class="role">Shareholder</span><p>Counsels closely held businesses and property owners across West Michigan on formation, contracts, and transactions. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
-      <a class="team-card" href="attorneys.html"><div class="photo">KK</div><div class="info"><strong>Kurt R. Killman</strong><span class="role">Shareholder</span><p>Litigates and mediates commercial and civil disputes in state and federal courts. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
-      <a class="team-card" href="attorneys.html"><div class="photo">JH</div><div class="info"><strong>Julian J. Heidenreich</strong><span class="role">Attorney</span><p>Defends no-fault, auto negligence, and premises liability matters for insurers and businesses statewide. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
-      <a class="team-card" href="attorneys.html"><div class="photo">JO</div><div class="info"><strong>Jason Osbourn</strong><span class="role">Attorney</span><p>Builds estate plans, wills, and trusts that protect families and their businesses. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
-      <a class="team-card" href="attorneys.html"><div class="photo">KB</div><div class="info"><strong>Kara Beurkens</strong><span class="role">Attorney</span><p>Guides clients through divorce, custody, and support with discretion. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
-      <a class="team-card" href="attorneys.html"><div class="photo">NR</div><div class="info"><strong>Nicholas C. Rizzo</strong><span class="role">Attorney</span><p>Recovers what businesses are owed through efficient collections practice. <em>(placeholder bio)</em></p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/peter-bosch.html"><div class="photo">PB</div><div class="info"><strong>Peter D. Bosch</strong><span class="role">Partner</span><p>Counsels closely held businesses and property owners across West Michigan, and leads the firm's environmental practice.</p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/kurt-killman.html"><div class="photo">KK</div><div class="info"><strong>Kurt R. Killman</strong><span class="role">Partner</span><p>Litigates and mediates commercial and civil disputes in state and federal courts.</p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/julian-heidenreich.html"><div class="photo">JH</div><div class="info"><strong>Julian J. Heidenreich</strong><span class="role">Partner</span><p>Handles business, litigation, and real estate matters, and both sides of injury work.</p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/andrea-koop.html"><div class="photo">AK</div><div class="info"><strong>Andrea Remynse Koop</strong><span class="role">Partner</span><p>Represents insurers and injured claimants in no-fault, auto negligence, and premises liability matters.</p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/kara-beurkens.html"><div class="photo">KB</div><div class="info"><strong>Kara Beurkens</strong><span class="role">Associate</span><p>Guides clients through divorce, custody, and support, and defends criminal matters.</p><span class="bio">View Bio</span></div></a>
+      <a class="team-card" href="team/jason-osbourn.html"><div class="photo">JO</div><div class="info"><strong>Jason Osbourn</strong><span class="role">Associate</span><p>Builds estate plans, wills, and trusts that protect families and their businesses.</p><span class="bio">View Bio</span></div></a>
     </div>
   </div>
 </section>
@@ -275,6 +275,7 @@ let chosen=null;
 // Round-robin for shared areas (e.g., Personal Injury).
 // DEMO ONLY: counter resets on reload; production tracks rotation server-side.
 const rr={};
+const SLUGS={"Peter D. Bosch":"peter-bosch","Kurt R. Killman":"kurt-killman","Julian J. Heidenreich":"julian-heidenreich","Andrea Remynse Koop":"andrea-koop","Kara Beurkens":"kara-beurkens","Jason Osbourn":"jason-osbourn","Nicholas C. Rizzo":"nicholas-rizzo","Kristin Bosch":"kristin-bosch"};
 const DIRECT_CONTACT=['Insurance Defense','Environmental','Mediation'];
 function show(step,lbl,ttl){
   [step1,step2].forEach(s=>s.classList.remove('active'));
@@ -294,7 +295,7 @@ document.querySelectorAll('.chip').forEach(chip=>{
     if(DIRECT_CONTACT.indexOf(area)>-1){
       // Direct-contact areas: no web intake form (firm decision 2026-07-24)
       document.getElementById('gs-copy').style.display='none';
-      matchList.innerHTML=ROUTES[area].map(a=>'<div class="match" style="margin-top:10px"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></div>').join('');
+      matchList.innerHTML=ROUTES[area].map(a=>'<a class="match" href="team/'+SLUGS[a.name]+'.html" style="margin-top:10px;text-decoration:none"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></a>').join('');
       // Carrier-facing: direct contact, not consumer intake
       intakeBtn.href='practice/insurance-defense.html';
       intakeBtn.removeAttribute('target');
@@ -312,7 +313,7 @@ document.querySelectorAll('.chip').forEach(chip=>{
     }
     document.getElementById('gs-copy').style.display='';
     chosen=assign(area);
-    matchList.innerHTML='<div class="match"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></div>';
+    matchList.innerHTML='<a class="match" href="team/'+SLUGS[chosen.name]+'.html" style="text-decoration:none"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></a>';
     {
       intakeBtn.href=FORM_LINKS[area];
       intakeBtn.setAttribute('target','_blank');
