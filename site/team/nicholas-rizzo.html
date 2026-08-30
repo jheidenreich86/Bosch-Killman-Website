@@ -66,21 +66,36 @@
     </div>
 
     <aside class="bio-side">
+      <div class="pa-picker" id="pa-picker">
+        <div class="k">Start a Matter</div>
+        <p class="pa-intro">Select the area your matter falls under:</p>
+        <button class="pa-opt" data-area="Collection" data-kind="form">Collection<span>Start intake form</span></button>
+        <button class="pa-opt" data-area="Insurance Defense" data-kind="direct" data-page="../practice/insurance-defense.html">Insurance Defense<span>Handled by direct contact</span></button>
+        <p class="pa-note" id="pa-note">Prefer to talk first? Call the office and we'll connect you.</p>
+        <div class="pa-contact">
+        <a class="btn btn-line" href="tel:6163642900">Call (616) 364-2900</a>
+        <a class="btn btn-line" href="../contact.html">Contact the Office</a>
+        </div>
+      </div>
       <div class="bio-side-block">
         <div class="k">Practice Areas</div>
         <ul class="bio-areas"><li><a href="../practice/collection.html">Collection</a></li><li><a href="../practice/insurance-defense.html">Insurance Defense</a></li></ul>
-      </div>
-      <div class="bio-side-block">
-        <div class="k">Contact</div>
-        <p><a href="tel:6163642900" class="textlink" style="text-transform:none;letter-spacing:.02em;font-size:15px">(616) 364-2900</a></p>
-        <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">2900 East Beltline Ave NE<br>Grand Rapids, MI 49525</p>
-        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:10px"><em>Direct dial and email to be added.</em></p>
       </div>
       <a class="btn btn-line" href="../attorneys.html" style="display:block;text-align:center">&larr; All of Our Team</a>
     </aside>
   </div>
 </section>
 
+
+<script src="../assets/forms.js"></script>
+<script>
+document.querySelectorAll('.pa-opt').forEach(function(b){
+  b.addEventListener('click',function(){
+    if(b.dataset.kind==='form'){ window.open(FORM_LINKS[b.dataset.area],'_blank','noopener'); }
+    else { window.location.href=b.dataset.page; }
+  });
+});
+</script>
 <footer>
   <div class="wrap">
     <div>

@@ -81,43 +81,32 @@
   <div class="wrap">
     <div id="gs-copy">
       <div class="kicker">Get Started</div>
-      <h2>The right attorney, on your calendar.</h2>
-      <p>Tell us what you need help with. We route you to the attorney who handles those matters and show their real availability.</p>
+      <h2>Straight to the right desk.</h2>
+      <p>Choose the matter you need help with and we'll take you to the intake form for that practice area — about three minutes to complete.</p>
       <ul class="gs-points">
         <li><span class="n">01</span>Choose your legal matter</li>
-        <li><span class="n">02</span>We match you with the right attorney</li>
-        <li><span class="n">03</span>Complete a short intake — we follow up within one business day to schedule</li>
+        <li><span class="n">02</span>Complete a short intake form</li>
+        <li><span class="n">03</span>We follow up within one business day to schedule</li>
       </ul>
     </div>
     <div class="router" id="router">
-      <p class="steps"><b id="step-label">Step 1 of 3</b></p>
       <h3 id="router-title">What do you need help with?</h3>
-      <div class="router-step active" id="step1">
-        <div class="chips" role="group" aria-label="Choose a practice area">
-          <button class="chip" data-area="Business">Business</button>
-          <button class="chip" data-area="Litigation">Litigation</button>
-          <button class="chip" data-area="Insurance Defense">Insurance Defense</button>
-          <button class="chip" data-area="Insurance Defense">Insurance Defense</button>
-          <button class="chip" data-area="Estate Planning">Estate Planning</button>
-          <button class="chip" data-area="Family Law">Family Law</button>
-          <button class="chip" data-area="Criminal">Criminal</button>
-          <button class="chip" data-area="Real Estate">Real Estate</button>
-          <button class="chip" data-area="Personal Injury">Personal Injury</button>
-          <button class="chip" data-area="Collection">Collection</button>
-          <button class="chip" data-area="Environmental">Environmental</button>
-          <button class="chip" data-area="Mediation">Mediation</button>
-        </div>
-        <p class="note">Your answer routes you to the attorney who handles these matters.</p>
+      <div class="chips" role="group" aria-label="Choose a practice area">
+        <button class="chip" data-area="Business">Business</button>
+        <button class="chip" data-area="Litigation">Litigation</button>
+        <button class="chip" data-area="Insurance Defense">Insurance Defense</button>
+        <button class="chip" data-area="Estate Planning">Estate Planning</button>
+        <button class="chip" data-area="Family Law">Family Law</button>
+        <button class="chip" data-area="Criminal">Criminal</button>
+        <button class="chip" data-area="Real Estate">Real Estate</button>
+        <button class="chip" data-area="Personal Injury">Personal Injury</button>
+        <button class="chip" data-area="Collection">Collection</button>
+        <button class="chip" data-area="Environmental">Environmental</button>
+        <button class="chip" data-area="Mediation">Mediation</button>
       </div>
-      <div class="router-step" id="step2">
-        <div id="match-list"></div>
-        <p class="note" id="slot-note">Complete a short intake — about three minutes — and your matter goes straight to this attorney. We follow up within one business day to schedule a phone conference or office meeting.</p>
-        <a class="btn btn-solid" id="router-intake" href="#" target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:18px">Start Intake</a>
-        <p class="note" style="margin-top:14px">Prefer to talk first? <a href="tel:6163642900" style="color:var(--navy-800)">(616) 364-2900</a></p>
-        <p class="note" style="font-size:11.5px">Submitting the form does not create an attorney–client relationship, and the firm cannot represent you until conflicts are cleared.</p>
-        <button class="back" id="back1">&larr; Choose a different practice area</button>
-      </div>
-      </div>
+      <p class="note">Insurance Defense, Environmental, and Mediation are handled by direct contact rather than an online form.</p>
+      <p class="note" style="font-size:11.5px">Submitting a form does not create an attorney–client relationship, and the firm cannot represent you until conflicts are cleared.</p>
+    </div>
   </div>
 </section>
 
@@ -254,77 +243,17 @@ function go(i){
 function restart(){clearInterval(timer);timer=setInterval(()=>go((idx+1)%slides.length),6000);}
 if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){restart();}
 
-// Intake router — routes to attorney, links to that area's live Clio intake form
-const step1=document.getElementById('step1'),step2=document.getElementById('step2');
-const label=document.getElementById('step-label'),title=document.getElementById('router-title');
-const matchList=document.getElementById('match-list');
-const intakeBtn=document.getElementById('router-intake');
-let chosen=null;
-// Round-robin for shared areas (e.g., Personal Injury).
-// DEMO ONLY: counter resets on reload; production tracks rotation server-side.
-const rr={};
-const SLUGS={"Peter D. Bosch":"peter-bosch","Kurt R. Killman":"kurt-killman","Julian J. Heidenreich":"julian-heidenreich","Andrea Remynse Koop":"andrea-koop","Kara Beurkens":"kara-beurkens","Jason Osbourn":"jason-osbourn","Nicholas C. Rizzo":"nicholas-rizzo","Kristin Bosch":"kristin-bosch"};
+// Practice-area router: straight to that area's intake form,
+// or to the practice page for direct-contact areas.
 const DIRECT_CONTACT=['Insurance Defense','Environmental','Mediation'];
-function show(step,lbl,ttl){
-  [step1,step2].forEach(s=>s.classList.remove('active'));
-  step.classList.add('active');label.textContent=lbl;title.textContent=ttl;
-}
-function assign(area){
-  const list=ROUTES[area];
-  if(list.length===1) return list[0];
-  rr[area]=(rr[area]||0);
-  const a=list[rr[area]%list.length];
-  rr[area]++;
-  return a;
-}
 document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
     const area=chip.dataset.area;
-    if(DIRECT_CONTACT.indexOf(area)>-1){
-      // Direct-contact areas: no web intake form (firm decision 2026-07-24)
-      document.getElementById('gs-copy').style.display='none';
-      matchList.innerHTML=ROUTES[area].map(a=>'<a class="match" href="team/'+SLUGS[a.name]+'.html" style="margin-top:10px;text-decoration:none"><div class="avatar">'+a.initials+'</div><div><strong>'+a.name+'</strong><span>'+a.focus+'</span></div></a>').join('');
-      // Carrier-facing: direct contact, not consumer intake
-      intakeBtn.href='practice/insurance-defense.html';
-      intakeBtn.removeAttribute('target');
-      intakeBtn.textContent='Assign a Case / Learn More';
-      if(area==='Insurance Defense'){
-        intakeBtn.textContent='Assign a Case / Learn More';
-        document.getElementById('slot-note').textContent='Carriers and claims professionals: call the office and ask for the attorney handling your file \u2014 new assignments are acknowledged the same business day.';
-        show(step2,'Our Defense Group','Insurance defense practice group');
-      }else{
-        intakeBtn.textContent='Contact Us About This Matter';
-        document.getElementById('slot-note').textContent='This practice area is handled by direct contact rather than an online form. Call the office at (616) 364-2900 and we\u2019ll set up a time to talk, or use the contact page.';
-        show(step2,'Step 2 of 2','You\u2019re matched with '+ROUTES[area][0].name.split(' ')[0]);
-      }
-      return;
-    }
-    document.getElementById('gs-copy').style.display='';
-    chosen=assign(area);
-    matchList.innerHTML='<a class="match" href="team/'+SLUGS[chosen.name]+'.html" style="text-decoration:none"><div class="avatar">'+chosen.initials+'</div><div><strong>'+chosen.name+'</strong><span>'+chosen.focus+'</span></div></a>';
-    {
-      intakeBtn.href=FORM_LINKS[area];
-      intakeBtn.setAttribute('target','_blank');
-      intakeBtn.textContent='Start Intake';
-      document.getElementById('slot-note').textContent='Complete a short intake \u2014 about three minutes \u2014 and your matter goes straight to this attorney. We follow up within one business day to schedule a phone conference or office meeting.';
-    }
-    show(step2,'Step 2 of 3','You\u2019re matched with '+chosen.name.split(' ')[0]);
+    const dest=FORM_LINKS[area];
+    if(DIRECT_CONTACT.indexOf(area)>-1){ window.location.href=dest; }
+    else { window.open(dest,'_blank','noopener'); }
   });
 });
-document.getElementById('back1').addEventListener('click',()=>{document.getElementById('gs-copy').style.display='';show(step1,'Step 1 of 3','What do you need help with?');});
-
-// Testimonial rotator
-const quotes=[...document.querySelectorAll('.quote')];
-const qDots=document.getElementById('quote-dots');
-let qi=0,qTimer;
-quotes.forEach((q,i)=>{
-  const d=document.createElement('button');d.className='dash'+(i===0?' on':'');d.setAttribute('aria-label','Show testimonial '+(i+1));
-  d.addEventListener('click',()=>{qGo(i);qRestart();});qDots.appendChild(d);
-});
-const qd=[...qDots.children];
-function qGo(i){quotes[qi].classList.remove('on');qd[qi].classList.remove('on');qi=i;quotes[qi].classList.add('on');qd[qi].classList.add('on');}
-function qRestart(){clearInterval(qTimer);qTimer=setInterval(()=>qGo((qi+1)%quotes.length),7000);}
-if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){qRestart();}
 </script>
 </body>
 </html>
